@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Vaccinations widget</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  </head>
+  <body>
+    <span class="popup">1,834,430 Total Vaccine Doses Administered in B.C. <a target="_blank" href="https://www2.gov.bc.ca/gov/content/covid-19/vaccine/plan">View schedule</a></span>
+    <a class="float" href="#">
+      <i class="fas fa-syringe icon-margin"></i>
+    </a>
+    <script>
+      $(document).ready(function() {
+        $('.popup').hide();
+        $('.float').html('<i class="fas fa-syringe icon-margin"></i>');
+
+        $('.float').on('click', function(e) {
+          var parent = $(this);
+
+          var isPopupShowing = $('.popup').is(":hidden");
+          var icon = isPopupShowing ? '<i class="fas fa-times icon-margin fa-spin"></i>' : '<i class="fas fa-syringe icon-margin"></i>';
+          $(this).html(icon);
+
+          $('.popup').fadeToggle(500, function() {
+            parent.find("i:first").addClass("pause-spinner");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
